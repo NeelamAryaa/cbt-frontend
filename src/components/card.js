@@ -25,8 +25,8 @@ const Card = (props) => {
       // .get("http://localhost:8080/api/getAllPaper")
 
       .then((res) => {
-        // console.log(res.data);
-        setAllQuestionPaper(res.data);
+        console.log(res.data);
+        setAllQuestionPaper(res.data.rows);
       })
       .catch((err) => {
         console.log(err);

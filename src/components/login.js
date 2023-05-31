@@ -3,6 +3,7 @@ import axios from "axios";
 import "../App.css";
 import { useHistory } from "react-router-dom";
 import NavBar from "./navbar";
+const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const LoginPage = () => {
   const history = useHistory();
@@ -12,7 +13,7 @@ const LoginPage = () => {
 
   const onSubmitHandler = () => {
     axios
-      .post(`http://localhost:8080/auth/login`, { details })
+      .post(`${base_api_url}/auth/login`, { details })
       .then((response) => {
         console.log(response.data);
         localStorage.setItem(
