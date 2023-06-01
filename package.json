@@ -1,7 +1,6 @@
 {
   "name": "cbt-app",
   "version": "0.1.0",
-  "homepage": "cbt",
   "private": true,
   "dependencies": {
     "@chiragrupani/fullscreen-react": "^1.1.1",

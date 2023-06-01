@@ -17,7 +17,7 @@ import PageNotFound from "./pages/404Page";
 
 function App() {
   return (
-    <Router basename="/cbt">
+    <Router>
       <div className="App">
         {/* <TestSummaryModal /> */}
         {/* <NavBar /> */}
