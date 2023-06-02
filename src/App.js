@@ -6,7 +6,8 @@ import HomePage from "./pages/homepage";
 import QuestionsScreen from "./pages/questions-screen";
 import { Switch, Route } from "react-router-dom";
 
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import ScoreScreen from "./pages/score-screen";
 import LoginPage from "./components/login";
 import NavBar from "./components/navbar";
