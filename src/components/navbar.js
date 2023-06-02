@@ -26,9 +26,9 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-dark " style={{ backgroundColor: "#29385c" }}>
       <div className="container-fluid d-flex mw-100">
-        <a className="navbar-brand" href="/cbt">
-          Computer Based Test
-        </a>
+        {/* <a className="navbar-brand" href="/"> */}
+        <Link to="/">Computer Based Test</Link>
+        {/* </a> */}
 
         {!localStorage.getItem("login") || logout ? (
           <div className="navbar-brand d-flex text-white justify-content-end">
