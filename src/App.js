@@ -1,19 +1,19 @@
 import "./App.css";
 import React from "react";
-import ExamSummary from "./pages/examSummary";
+import ExamSummary from "./pages/exam-summary";
 import Instructions from "./pages/instructions";
 import HomePage from "./pages/homepage";
-import QuestionsScreen from "./pages/questionsScreen";
+import QuestionsScreen from "./pages/questions-screen";
 import { Switch, Route } from "react-router-dom";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 import { HashRouter as Router } from "react-router-dom";
 
-import ScoreScreen from "./pages/scoreScreen";
-import LoginPage from "./components/Login";
+import ScoreScreen from "./pages/score-screen";
+import LoginPage from "./components/login";
 
-import SignUpPage from "./components/SignUp";
-import Profile from "./components/Profile";
+import SignUpPage from "./components/sign-up";
+import Profile from "./components/profile";
 import PageNotFound from "./pages/404Page";
 
 function App() {

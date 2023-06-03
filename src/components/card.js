@@ -12,7 +12,7 @@ import {
 } from "../redux/question/question.actions";
 
 import { base_api_url } from "../config";
-import Loader from "./Loader";
+import Loader from "./loader";
 
 // const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 

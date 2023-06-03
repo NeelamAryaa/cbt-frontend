@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
-import QuesScreenLeftPanel from "../components/QuesScreenLeftPanel";
+import QuesScreenLeftPanel from "../components/ques-screen-left-panel";
 import QuesScreenRightPanel from "../components/ques-screen-right-panel";
 // import TestSummaryModal from "../components/test-summary-modal";
 import "../App.css";
@@ -15,7 +15,7 @@ import {
   UpdateCurrentSection,
 } from "../redux/question/question.actions";
 import { base_api_url } from "../config";
-import Loader from "../components/Loader";
+import Loader from "../components/loader";
 
 class QuestionsScreen extends Component {
   state = {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./Navbar";
+import NavBar from "./navbar";
 import axios from "axios";
 import dayjs from "dayjs";
 import { base_api_url } from "../config";
