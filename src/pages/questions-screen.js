@@ -4,7 +4,7 @@ import axios from "axios";
 import QuesScreenLeftPanel from "../components/ques-screen-left-panel";
 import QuesScreenRightPanel from "../components/ques-screen-right-panel";
 // import TestSummaryModal from "../components/test-summary-modal";
-import "../App.css";
+import "../app.css";
 import { connect } from "react-redux";
 import {
   SetAnswer,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NavBar from "./navbar";
-import "../App.css";
+import "../app.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { base_api_url } from "../config";

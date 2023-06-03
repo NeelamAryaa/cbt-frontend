@@ -1,4 +1,4 @@
-import "./App.css";
+import "./app.css";
 import React from "react";
 import ExamSummary from "./pages/exam-summary";
 import Instructions from "./pages/instructions";
@@ -14,7 +14,7 @@ import LoginPage from "./components/login";
 
 import SignUpPage from "./components/sign-up";
 import Profile from "./components/profile";
-import PageNotFound from "./pages/404Page";
+import PageNotFound from "./pages/error-page";
 
 function App() {
   return (

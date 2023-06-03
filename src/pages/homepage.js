@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import Card from "../components/Card";
+import Card from "../components/card";
 import NavBar from "../components/navbar";
 
-import { useState } from "react";
 // const screenfull = require("screenfull");
 
 const HomePage = () => {
