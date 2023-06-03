@@ -16,6 +16,7 @@ import {
 } from "../redux/question/question.actions";
 import { base_api_url } from "../config";
 // import Loader from "../components/loader";
+import Spinner from "../components/spinner";
 
 class QuestionsScreen extends Component {
   state = {
@@ -112,8 +113,8 @@ class QuestionsScreen extends Component {
             >
               NIMCET - 2021
             </nav>
-            {/* <Loader /> */}
-            <h1>loader</h1>
+            <Spinner />
+            {/* <h1>loader</h1> */}
           </>
         ) : Object.keys(this.props.questions).length ? (
           <div className="d-flex">

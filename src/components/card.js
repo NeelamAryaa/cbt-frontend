@@ -13,6 +13,7 @@ import {
 
 import { base_api_url } from "../config";
 // import Loader from "./loader";
+import Spinner from "./spinner";
 
 const Card = (props) => {
   const history = useHistory();
@@ -89,9 +90,9 @@ const Card = (props) => {
   return (
     <>
       {isLoading ? (
-        // <Loader />
-        <h1>loader</h1>
+        <Spinner />
       ) : (
+        // <h1>loader</h1>
         allQuestionPapers.map((ppr, idx) => (
           <div
             key={idx}
