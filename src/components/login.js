@@ -2,8 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import "../App.css";
 import { useHistory } from "react-router-dom";
-import NavBar from "./navbar";
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import NavBar from "./Navbar";
+import { base_api_url } from "../config";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const LoginPage = () => {
   const history = useHistory();

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 import { useHistory } from "react-router-dom";
-
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import { base_api_url } from "../config";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const QuesScreenRightPanel = (props) => {
   // const [score, setScore] = useState(0);
@@ -54,7 +54,8 @@ const QuesScreenRightPanel = (props) => {
   };
 
   return (
-    <div className="col-3 p-0 border-start">
+    // <div className="container">
+    <div className="col-3">
       {/* <div className="row mx-0 text-primary">
         <div className="col ps-3">
           <u>Question paper</u>
@@ -64,7 +65,7 @@ const QuesScreenRightPanel = (props) => {
         </div>
       </div> */}
       <hr className="m-0" />
-      <div className="row py-2 mx-0">
+      <div className=" d-flex ">
         <img
           src={"https://picsum.photos/id/20/100/100"}
           className="col"
@@ -72,10 +73,10 @@ const QuesScreenRightPanel = (props) => {
           height="100"
         />
 
-        <div className="col border-start">
-          <div className="row px-2 text-capitalize">
-            Name : {JSON.parse(localStorage.getItem("login")).username}
-          </div>
+        <div className="mx-2">
+          {/* <div className="row px-2 text-capitalize"> */}
+          Name : {JSON.parse(localStorage.getItem("login")).username}
+          {/* </div> */}
           {/* <div className="row px-2">Roll no.: 20218833</div> */}
         </div>
       </div>
@@ -132,15 +133,15 @@ const QuesScreenRightPanel = (props) => {
 
       <hr className="m-0" />
       <div
-        className="px-3 fs-5 text-white text-capitalize"
+        className=" px-3 fs-5 text-white text-capitalize"
         style={{ backgroundColor: "#29385c" }}
       >
         {props.currentSection}
       </div>
       <hr className="m-0" />
       <div
-        className="container border"
-        style={{ height: "255px", background: "#63e7f23d" }}
+        className="container border h-50"
+        style={{ background: "#63e7f23d" }}
       >
         <div className="row">
           {props.questions
@@ -171,16 +172,20 @@ const QuesScreenRightPanel = (props) => {
             : null}
         </div>
       </div>
-      <div className="container-fluid text-center ">
+      <div
+        className="d-flex"
+        // style={{ height: "100%" }}
+      >
         <button
           type="button"
-          className="btn btn-success my-3"
+          className="btn btn-success mx-auto my-5 w-50"
           onClick={calulateScore}
         >
           Submit
         </button>
       </div>
     </div>
+    // </div>
   );
 };
 

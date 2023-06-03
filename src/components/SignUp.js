@@ -1,9 +1,10 @@
 import { useState } from "react";
-import NavBar from "./navbar";
+import NavBar from "./Navbar";
 import "../App.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import { base_api_url } from "../config";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const SignUpPage = (props) => {
   const history = useHistory();
@@ -51,11 +52,13 @@ const SignUpPage = (props) => {
         });
 
         // go to login page
+        alert("Register Successfully !!!");
         history.push("/auth/login");
       })
       .catch((err) => {
         console.log(err);
         setSqlerr(err.response.data.err);
+        // setSqlerr(err);
         // return;
         // console.log(err);
       });

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./navbar";
+import NavBar from "./Navbar";
 import axios from "axios";
 import dayjs from "dayjs";
+import { base_api_url } from "../config";
 
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 const Profile = () => {
   const [testHistory, setTestHistory] = useState([]);
 
@@ -24,7 +25,7 @@ const Profile = () => {
         console.log(response);
 
         console.log(response.data);
-        setTestHistory(response.data);
+        setTestHistory(response.data.rows);
       })
       .catch((err) => console.log(err));
   }, []);

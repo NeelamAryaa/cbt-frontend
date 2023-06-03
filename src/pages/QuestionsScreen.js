@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
-import QuesScreenLeftPanel from "../components/ques-screen-left-panel";
+import QuesScreenLeftPanel from "../components/QuesScreenLeftPanel";
 import QuesScreenRightPanel from "../components/ques-screen-right-panel";
-import TestSummaryModal from "../components/test-summary-modal";
+// import TestSummaryModal from "../components/test-summary-modal";
 import "../App.css";
 import { connect } from "react-redux";
 import {
@@ -14,16 +14,17 @@ import {
   SetQuestionPaper,
   UpdateCurrentSection,
 } from "../redux/question/question.actions";
-
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import { base_api_url } from "../config";
+import Loader from "../components/Loader";
 
 class QuestionsScreen extends Component {
   state = {
     checkedOption: -1,
+    isLoading: true,
   };
 
   getAllquestionsCurrentPaper = async (id, pid) => {
-    console.log("question paper id type id", id, pid);
+    // console.log("question paper id type id", id, pid);
     await axios
       .get(`${base_api_url}/api/getPaper/${this.props.match.params.id}`, {
         headers: {
@@ -36,9 +37,12 @@ class QuestionsScreen extends Component {
         console.log(this.props);
         this.props.UpdateCurrentSection(Object.keys(res.data)[0]);
         this.props.SetQuestionPaper(res.data);
+        this.setState({ isLoading: false });
       })
       .catch((err) => {
         console.log(err);
+        this.setState({ isLoading: false });
+        alert("Something went wrong !!!");
       });
 
     console.log("im getallquesfunction");
@@ -99,12 +103,21 @@ class QuestionsScreen extends Component {
 
   render() {
     return (
-      <Fragment>
-        {/* <TestSummaryModal /> */}
-
-        {Object.keys(this.props.questions).length ? (
-          <div className="row  mx-0">
+      <div className="h-100 ">
+        {this.state.isLoading ? (
+          <>
+            <nav
+              className="navbar py-0 px-3 text-white"
+              style={{ backgroundColor: "#29385c" }}
+            >
+              NIMCET - 2021
+            </nav>
+            <Loader />
+          </>
+        ) : Object.keys(this.props.questions).length ? (
+          <div className="d-flex">
             <QuesScreenLeftPanel
+              // className="w-75"
               questions={this.props.questions}
               answers={this.props.answers}
               MarkForReview={this.props.MarkForReview}
@@ -114,30 +127,15 @@ class QuestionsScreen extends Component {
               checkedOption={this.state.checkedOption}
             />
             <QuesScreenRightPanel
+              // className="w-25"
               questions={this.props.questions}
               currentSection={this.props.currentSection}
               onChangeQues={this.onChangeQues}
               updateCheckedOption={this.updateCheckedOption}
             />
           </div>
-        ) : (
-          <>
-            <nav
-              className="navbar 
-         py-0 px-3 text-white"
-              style={{ backgroundColor: "#29385c" }}
-            >
-              NIMCET - 2021
-            </nav>
-            <div
-              className="d-flex justify-content-center align-items-center"
-              style={{ height: "90vh" }}
-            >
-              <h1>Question Paper not found</h1>
-            </div>
-          </>
-        )}
-      </Fragment>
+        ) : null}
+      </div>
     );
   }
 }

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import { base_api_url } from "../config";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 class ExamSummary extends Component {
   state = {

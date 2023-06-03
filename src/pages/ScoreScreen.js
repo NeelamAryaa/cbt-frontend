@@ -4,9 +4,9 @@ import { Doughnut } from "react-chartjs-2";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import NavBar from "../components/navbar";
-
-const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import NavBar from "../components/Navbar";
+import { base_api_url } from "../config";
+// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const ScoreScreen = (props) => {
   const [paperDetail, setPaperDetail] = useState({});
