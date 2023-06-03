@@ -1,13 +1,14 @@
 import "./App.css";
 import React from "react";
 import ExamSummary from "./pages/ExamSummary";
-import Instructions from "./pages/Instructions";
+import Instructions from "./pages/instructions";
 import HomePage from "./pages/Homepage";
 import QuestionsScreen from "./pages/QuestionsScreen";
 import { Switch, Route } from "react-router-dom";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 import { HashRouter as Router } from "react-router-dom";
+
 import ScoreScreen from "./pages/ScoreScreen";
 import LoginPage from "./components/Login";
 
