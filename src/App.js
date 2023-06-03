@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import React from "react";
 import ExamSummary from "./pages/exam-summary";
 import Instructions from "./pages/instructions";
