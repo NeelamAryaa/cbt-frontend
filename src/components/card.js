@@ -12,7 +12,7 @@ import {
 } from "../redux/question/question.actions";
 
 import { base_api_url } from "../config";
-import Loader from "./loader";
+// import Loader from "./loader";
 
 const Card = (props) => {
   const history = useHistory();
@@ -89,7 +89,8 @@ const Card = (props) => {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        // <Loader />
+        <h1>loader</h1>
       ) : (
         allQuestionPapers.map((ppr, idx) => (
           <div
