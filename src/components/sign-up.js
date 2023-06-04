@@ -5,12 +5,15 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { base_api_url } from "../config";
 // const base_api_url = "https://aryaa-cbt-backend.onrender.com";
+import { notify } from "./toast";
+import { Toaster } from "react-hot-toast";
 
 const SignUpPage = (props) => {
   const history = useHistory();
-  const [sqlerr, setSqlerr] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  // const [sqlerr, setSqlerr] = useState("");
   const [success, setSuccess] = useState("");
-  const [validation, setValidation] = useState({ errMsg: "" });
+  const [errorMsg, setErrorMsg] = useState({ errMsg: "" });
   const [details, setDetails] = useState({
     username: null,
     email: null,
@@ -21,18 +24,18 @@ const SignUpPage = (props) => {
   const onChangeHandle = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
 
     setDetails({ ...details, [name]: value });
 
-    setValidation({ errMsg: "" });
-    setSqlerr("");
+    setErrorMsg({ errMsg: "" });
+    // setSqlerr("");
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (details.confirm_password != details.password) {
-      setValidation({ errMsg: "Password does not match!!!" });
+      setErrorMsg({ errMsg: "Password does not match!!!" });
       return;
     }
 
@@ -41,7 +44,7 @@ const SignUpPage = (props) => {
     axios
       .post(`${base_api_url}/auth/register`, { details })
       .then((response) => {
-        console.log(response.data);
+        setIsLoading(false);
         setSuccess(response.data.msg);
 
         setDetails({
@@ -52,21 +55,22 @@ const SignUpPage = (props) => {
         });
 
         // go to login page
-        alert("Register Successfully !!!");
-        history.push("/auth/login");
+        notify("Register Successfully !!!");
+        // history.push("/auth/login");
       })
       .catch((err) => {
-        console.log(err);
-        setSqlerr(err.response.data.err);
-        // setSqlerr(err);
-        // return;
-        // console.log(err);
+        if (!err.response) setErrorMsg({ errMsg: err.message });
+        else {
+          setErrorMsg({ errMsg: err.response.data.err.detail });
+        }
+        setIsLoading(false);
       });
   };
 
   return (
     <>
       <NavBar />
+      <Toaster />
       <section class="vh-90 my-3">
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -83,15 +87,9 @@ const SignUpPage = (props) => {
                   <p class="text-center fw-bold  fs-3 mb-0">Sign Up</p>
                 </div>
 
-                {validation.errMsg ? (
+                {errorMsg.errMsg ? (
                   <div class="alert alert-danger" role="alert">
-                    {validation.errMsg}
-                  </div>
-                ) : null}
-
-                {sqlerr ? (
-                  <div class="alert alert-danger" role="alert">
-                    {sqlerr}
+                    {errorMsg.errMsg}
                   </div>
                 ) : null}
 
@@ -153,8 +151,18 @@ const SignUpPage = (props) => {
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button type="submit" class="btn btn-primary btn">
-                    Sign Up
+                    {isLoading ? "Loading..." : "Sign Up"}
                   </button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">
+                    Do you have an account?{" "}
+                    <div
+                      style={{ cursor: "pointer" }}
+                      class="d-inline link-danger"
+                      onClick={() => history.push("/auth/login")}
+                    >
+                      Login
+                    </div>
+                  </p>
                 </div>
               </form>
             </div>

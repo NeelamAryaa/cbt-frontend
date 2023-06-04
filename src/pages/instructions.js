@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-// import { withRouter } from "react-router-dom";
 
 class Instructions extends Component {
   state = {
@@ -17,8 +16,6 @@ class Instructions extends Component {
   };
 
   componentDidMount = () => {
-    console.log("component did mount ques screen", this.props.questions);
-
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     return () => {
       window.removeEventListener("beforeunload", this.handleBeforeUnload);

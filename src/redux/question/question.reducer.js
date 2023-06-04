@@ -112,7 +112,6 @@ const reducer = (state = INITIAL_STATE, action) => {
         questions: action.payload,
       };
     case INITIAL_ANSWER:
-      console.log("paylod=====", action.payload);
       return {
         ...state,
         answers: action.payload,
@@ -131,7 +130,6 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
 
     case ANSWER:
-      console.log(action.payload);
       return {
         ...state,
         answers: action.payload,

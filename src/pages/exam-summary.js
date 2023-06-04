@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { base_api_url } from "../config";
-// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 class ExamSummary extends Component {
   state = {
@@ -12,7 +11,6 @@ class ExamSummary extends Component {
 
   componentDidMount = () => {
     axios.get(`${base_api_url}/api/getScore/`).then((res) => {
-      console.log(res.data);
       this.setState({ result: res.data });
     });
   };

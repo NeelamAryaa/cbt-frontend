@@ -4,19 +4,19 @@ import "../App.css";
 import { useHistory } from "react-router-dom";
 import NavBar from "./navbar";
 import { base_api_url } from "../config";
-// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const LoginPage = () => {
   const history = useHistory();
   const [loginErr, setLoginErr] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const [details, setDetails] = useState({ email: null, password: null });
 
   const onSubmitHandler = () => {
+    setIsLoading(true);
     axios
       .post(`${base_api_url}/auth/login`, { details })
       .then((response) => {
-        console.log(response.data);
+        setIsLoading(false);
         localStorage.setItem(
           "login",
           JSON.stringify({
@@ -29,9 +29,12 @@ const LoginPage = () => {
         history.push("/");
       })
       .catch((err) => {
-        console.log(err.response.data.err);
-        const error = err.response.data.err;
-        setLoginErr(error);
+        setIsLoading(false);
+
+        if (!err.response) setLoginErr(err.message);
+        else {
+          setLoginErr(err.response.data.err);
+        }
       });
   };
 
@@ -96,7 +99,7 @@ const LoginPage = () => {
                     class="btn btn-primary btn"
                     onClick={onSubmitHandler}
                   >
-                    Login
+                    {isLoading ? "Loading..." : "Login"}
                   </button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">
                     Don't have an account?{" "}

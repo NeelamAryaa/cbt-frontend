@@ -3,7 +3,7 @@ import axios from "axios";
 
 import QuesScreenLeftPanel from "../components/ques-screen-left-panel";
 import QuesScreenRightPanel from "../components/ques-screen-right-panel";
-// import TestSummaryModal from "../components/test-summary-modal";
+import Toast from "../components/toast";
 import "../App.css";
 import { connect } from "react-redux";
 import {
@@ -15,8 +15,9 @@ import {
   UpdateCurrentSection,
 } from "../redux/question/question.actions";
 import { base_api_url } from "../config";
-// import Loader from "../components/loader";
 import Spinner from "../components/spinner";
+import { Toaster } from "react-hot-toast";
+import { notify } from "../components/toast";
 
 class QuestionsScreen extends Component {
   state = {
@@ -25,7 +26,6 @@ class QuestionsScreen extends Component {
   };
 
   getAllquestionsCurrentPaper = async (id, pid) => {
-    // console.log("question paper id type id", id, pid);
     await axios
       .get(`${base_api_url}/api/getPaper/${this.props.match.params.id}`, {
         headers: {
@@ -34,20 +34,14 @@ class QuestionsScreen extends Component {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        console.log(this.props);
         this.props.UpdateCurrentSection(Object.keys(res.data)[0]);
         this.props.SetQuestionPaper(res.data);
         this.setState({ isLoading: false });
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ isLoading: false });
-        alert("Something went wrong !!!");
+        notify(err.response.data);
       });
-
-    console.log("im getallquesfunction");
-    console.log(this.props.questions);
   };
 
   handleBeforeUnload = (e) => {
@@ -66,27 +60,11 @@ class QuestionsScreen extends Component {
 
     const { history } = this.props;
 
-    // window.addEventListener("popstate", (e) => {
-    //   // alert("Your data will be lost!!!");
-    //   history.go(1);
-    // });
-
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     return () => {
       window.removeEventListener("beforeunload", this.handleBeforeUnload);
     };
   };
-
-  // componentWillUpdate = () => {
-  //   const { history } = this.props;
-  //   window.addEventListener("popstate", (e) => {
-  //     // e.preventDefault();
-  //     if (window.confirm("you will lost your data") == true) {
-  //       // alert("you will lost your data");
-  //       history.go(1);
-  //     }
-  //   });
-  // };
 
   updateCheckedOption = (idx) => {
     this.setState({ checkedOption: idx });
@@ -105,6 +83,7 @@ class QuestionsScreen extends Component {
   render() {
     return (
       <div className="h-100 ">
+        <Toaster />
         {this.state.isLoading ? (
           <>
             <nav

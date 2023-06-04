@@ -8,9 +8,7 @@ const HomePage = () => {
   return (
     <Fragment>
       <NavBar />
-      {/* <div className="bg-white py-4 px-5 " style={{ minHeight: "90vh" }}> */}
       <Card />
-      {/* </div> */}
     </Fragment>
   );
 };

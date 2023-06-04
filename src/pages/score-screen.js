@@ -6,7 +6,6 @@ import axios from "axios";
 
 import NavBar from "../components/navbar";
 import { base_api_url } from "../config";
-// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const ScoreScreen = (props) => {
   const [paperDetail, setPaperDetail] = useState({});
@@ -36,13 +35,10 @@ const ScoreScreen = (props) => {
     ],
   };
 
-  console.log(props);
-
   const getScore = async () => {
     await axios
       .get(`${base_api_url}/api/getScore/`)
       .then((response) => {
-        console.log("calfn======", response);
         const result = response.data;
         setResult(response.data);
         const correct = result.total_score;
@@ -50,21 +46,14 @@ const ScoreScreen = (props) => {
         const unattempt = result.total_ques - result.total_attempt;
 
         const data = [wrong, correct, unattempt];
-        console.log("pie data", data);
         setPieData(data);
       })
       .catch((err) => console.log("calfn=========", err));
   };
 
   useEffect(() => {
-    console.log("mount===========");
-
     getScore();
 
-    console.log(pieData);
-
-    console.log(props);
-    console.log(props.PaperTypeID);
     axios
       .get(`${base_api_url}/api/getQuesPaperDetail/${props.PaperTypeID}`, {
         headers: {
@@ -73,7 +62,6 @@ const ScoreScreen = (props) => {
         },
       })
       .then((res) => {
-        console.log(res.data[0]);
         setPaperDetail(res.data[0]);
       })
       .catch((err) => {

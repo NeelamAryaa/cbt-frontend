@@ -80,11 +80,9 @@ class QuesScreenLeftPanel extends Component {
 
     const curr_ques =
       this.props.questions[this.props.currentSection][this.props.currentIndex];
-    // const ans = this.props.answers;
-    // console.log(ans[qid]);
+
     return (
       <div className="col-9">
-        {/* <div className=" mx-0"> */}
         <div
           className="row fs-5 ms-0 text-primary text-center"
           style={{ width: "73vw" }}
@@ -102,12 +100,8 @@ class QuesScreenLeftPanel extends Component {
             </div>
           ))}
         </div>
-        {/* </div> */}
         <hr className="m-0" />
-        {/* <div class="row px-3"> */}
         <div class="col text-start text-danger">Question type : MCQ</div>
-        {/* <div class="col text-end">Time left : 01:23:44</div> */}
-        {/* </div> */}
         <hr className="m-0" />
         <div
           className="px-5 fs-4 rounded-pill text-white text-capitalize"
@@ -151,88 +145,7 @@ class QuesScreenLeftPanel extends Component {
                     </label>
                   </div>
                 ))
-              : // <div>
-                //   <div class="form-check">
-                //     <input
-                //       class="form-check-input"
-                //       type="radio"
-                //       name="flexRadioDefault"
-                //       id="flexRadioDefault1"
-                //       onChange={() => this.onChangeOption(0)}
-                //       checked={
-                //         this.props.checkedOption !== -1
-                //           ? 0 === this.props.checkedOption
-                //           : // :
-                //             0 === this.props.answers[qid]
-                //         // false
-                //       }
-                //     />
-                //     <label class="form-check-label" for="flexRadioDefault1">
-                //       {curr_ques.option1}
-                //     </label>
-                //   </div>
-
-                //   <div class="form-check">
-                //     <input
-                //       class="form-check-input"
-                //       type="radio"
-                //       name="flexRadioDefault"
-                //       id="flexRadioDefault1"
-                //       onChange={() => this.onChangeOption(1)}
-                //       checked={
-                //         this.props.checkedOption !== -1
-                //           ? 1 === this.props.checkedOption
-                //           : // :
-                //             1 === this.props.answers[qid]
-                //         // false
-                //       }
-                //     />
-                //     <label class="form-check-label" for="flexRadioDefault1">
-                //       {curr_ques.option2}
-                //     </label>
-                //   </div>
-
-                //   <div class="form-check">
-                //     <input
-                //       class="form-check-input"
-                //       type="radio"
-                //       name="flexRadioDefault"
-                //       id="flexRadioDefault1"
-                //       onChange={() => this.onChangeOption(2)}
-                //       checked={
-                //         this.props.checkedOption !== -1
-                //           ? 2 === this.props.checkedOption
-                //           : // :
-                //             2 === this.props.answers[qid]
-                //         // false
-                //       }
-                //     />
-                //     <label class="form-check-label" for="flexRadioDefault1">
-                //       {curr_ques.option3}
-                //     </label>
-                //   </div>
-
-                //   <div class="form-check">
-                //     <input
-                //       class="form-check-input"
-                //       type="radio"
-                //       name="flexRadioDefault"
-                //       id="flexRadioDefault1"
-                //       onChange={() => this.onChangeOption(3)}
-                //       checked={
-                //         this.props.checkedOption !== -1
-                //           ? 3 === this.props.checkedOption
-                //           : // :
-                //             3 === this.props.answers[qid]
-                //         // false
-                //       }
-                //     />
-                //     <label class="form-check-label" for="flexRadioDefault1">
-                //       {curr_ques.option4}
-                //     </label>
-                //   </div>
-                // </div>
-                null}
+              : null}
           </div>
         </div>
 

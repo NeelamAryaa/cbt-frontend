@@ -36,13 +36,11 @@ export const SetQuestionPaper = (ppr) => {
 
     keys.forEach((key) => {
       ppr[key].forEach((ques) => {
-        console.log(ques);
         ques.isVisited = false;
         ques.isReviewed = false;
         ques.isAnswered = false;
         ques.isCorrect = false;
         ans[ques.qid] = -1;
-        console.log(ans);
       });
     });
 
@@ -80,8 +78,6 @@ export const SetAnswer = (qid, idx) => {
     const ans = { ...answers };
 
     ans[qid] = idx;
-
-    console.log("=============setans action", ans);
 
     dispatch({ type: ANSWER, payload: ans });
   };

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 
 import { useHistory } from "react-router-dom";
 import { base_api_url } from "../config";
-// const base_api_url = "https://aryaa-cbt-backend.onrender.com";
 
 const QuesScreenRightPanel = (props) => {
   // const [score, setScore] = useState(0);
@@ -26,15 +24,10 @@ const QuesScreenRightPanel = (props) => {
             Authorization:
               "Bearer " + JSON.parse(localStorage.getItem("login")).token,
           },
-          // headers: {
-          //   Authorization:
-          //     "Bearer " + JSON.parse(localStorage.getItem("login")).token,
-          // },
         }
       )
       .then((response) => {
         console.log("r======", response.data);
-        // setScore(response.data.total_score);
       })
       .catch((err) => console.log("r=========", err));
 

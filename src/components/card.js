@@ -5,14 +5,11 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import {
-  // SetQuestionPaper,
-  // UpdateCurrentSection,
   SetQuestionPaperID,
   SetPaperTypeID,
 } from "../redux/question/question.actions";
 
 import { base_api_url } from "../config";
-// import Loader from "./loader";
 import Spinner from "./spinner";
 
 const Card = (props) => {
@@ -20,79 +17,36 @@ const Card = (props) => {
 
   const [allQuestionPapers, setAllQuestionPaper] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [currentSection, setCurrentSection] = useState(null);
 
   useEffect(() => {
     axios
       .get(`${base_api_url}/api/getAllPaper`)
-      // .get("http://localhost:8080/api/getAllPaper")
 
       .then((res) => {
-        console.log(res.data);
         setAllQuestionPaper(res.data.rows);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
         setIsLoading(false);
         alert("Somthing went wrong !!!");
       });
   }, []);
 
   const OnStartTest = (id, pid) => {
-    console.log(id, pid);
-
     props.SetQuestionPaperID(id);
     props.SetPaperTypeID(pid);
     if (localStorage.getItem("login")) {
       history.push("/instruction");
-      console.log("props ", props);
     } else {
-      console.log("history", history);
       history.push("/auth/login");
     }
   };
-
-  // const getAllquestionsCurrentPaper = (id, pid) => {
-  //   props.SetQuestionPaperID(id);
-  //   props.SetPaperTypeID(pid);
-  //   console.log("question paper id type id", id, pid);
-  //   axios
-  //     .get(`http://localhost:8080/api/getPaper/${id}`)
-  //     .then((res) => {
-  //       // console.log(res.data);
-  //       console.log(props);
-  //       props.UpdateCurrentSection(Object.keys(res.data)[0]);
-  //       props.SetQuestionPaper(res.data);
-  //       // props.InitialSetAnswer();
-  //       // console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-
-  //   console.log("im getallquesfunction");
-  //   console.log(props.questions);
-  // };
-
-  // const getSection = (id) => {
-  //   axios
-  //     .get(`http://localhost:8080/api/getSections/${id}`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       props.SetQuestionPaper(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   return (
     <>
       {isLoading ? (
         <Spinner />
       ) : (
-        // <h1>loader</h1>
         allQuestionPapers.map((ppr, idx) => (
           <div
             key={idx}
@@ -135,16 +89,8 @@ const Card = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     questions: state.index.questions,
-//   };
-// };
-
 const mapDispatchToprops = (dispatch) => {
   return {
-    // SetQuestionPaper: (ppr) => dispatch(SetQuestionPaper(ppr)),
-    // UpdateCurrentSection: (sec) => dispatch(UpdateCurrentSection(sec)),
     SetQuestionPaperID: (id) => dispatch(SetQuestionPaperID(id)),
     SetPaperTypeID: (pid) => dispatch(SetPaperTypeID(pid)),
   };
