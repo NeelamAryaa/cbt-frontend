@@ -36,6 +36,7 @@ const SignUpPage = (props) => {
     setIsLoading(true);
     if (details.confirm_password != details.password) {
       setErrorMsg({ errMsg: "Password does not match!!!" });
+      setIsLoading(false);
       return;
     }
 
