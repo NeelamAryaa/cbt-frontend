@@ -83,7 +83,6 @@ class QuestionsScreen extends Component {
   render() {
     return (
       <div className="h-100 ">
-        <Toaster />
         {this.state.isLoading ? (
           <>
             <nav
@@ -92,6 +91,7 @@ class QuestionsScreen extends Component {
             >
               NIMCET - 2021
             </nav>
+            <Toaster />
             <Spinner />
             {/* <h1>loader</h1> */}
           </>
