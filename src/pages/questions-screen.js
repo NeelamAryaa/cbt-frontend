@@ -91,7 +91,7 @@ class QuestionsScreen extends Component {
             >
               {NIMCET - 2021}
             </nav> */}
-            {/* <Toaster /> */}
+            <Toaster />
             <Spinner />
             {/* <h1>loader</h1> */}
           </>
