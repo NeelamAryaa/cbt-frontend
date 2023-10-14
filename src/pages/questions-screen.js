@@ -85,13 +85,13 @@ class QuestionsScreen extends Component {
       <div className="h-100 ">
         {this.state.isLoading ? (
           <>
-            <nav
+            {/* <nav
               className="navbar py-0 px-3 text-white"
               style={{ backgroundColor: "#29385c" }}
             >
-              NIMCET - 2021
-            </nav>
-            <Toaster />
+              {NIMCET - 2021}
+            </nav> */}
+            {/* <Toaster /> */}
             <Spinner />
             {/* <h1>loader</h1> */}
           </>
