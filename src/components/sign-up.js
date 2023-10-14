@@ -57,7 +57,7 @@ const SignUpPage = (props) => {
 
         // go to login page
         notify("Register Successfully !!!");
-        // history.push("/auth/login");
+        history.push("/auth/login");
       })
       .catch((err) => {
         if (!err.response) setErrorMsg({ errMsg: err.message });
