@@ -57,6 +57,7 @@ const SignUpPage = (props) => {
 
         // go to login page
         notify("Register Successfully !!!");
+        // push to login page
         history.push("/auth/login");
       })
       .catch((err) => {
