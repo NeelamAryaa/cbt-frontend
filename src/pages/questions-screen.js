@@ -3,7 +3,7 @@ import axios from "axios";
 
 import QuesScreenLeftPanel from "../components/ques-screen-left-panel";
 import QuesScreenRightPanel from "../components/ques-screen-right-panel";
-import Toast from "../components/toast";
+// import Toast from "../components/toast";
 import "../App.css";
 import { connect } from "react-redux";
 import {
@@ -16,8 +16,9 @@ import {
 } from "../redux/question/question.actions";
 import { base_api_url } from "../config";
 import Spinner from "../components/spinner";
-import { Toaster } from "react-hot-toast";
-import { notify } from "../components/toast";
+// import { Toaster } from "react-hot-toast";
+// import { notify } from "../components/toast";
+import NavBar from "../components/navbar";
 
 class QuestionsScreen extends Component {
   state = {
@@ -40,7 +41,7 @@ class QuestionsScreen extends Component {
       })
       .catch((err) => {
         this.setState({ isLoading: false });
-        notify(err.response.data);
+        // notify(err.response.data);
       });
   };
 
@@ -58,7 +59,7 @@ class QuestionsScreen extends Component {
       this.props.paperTypeID
     );
 
-    const { history } = this.props;
+    // const { history } = this.props;
 
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     return () => {
@@ -82,41 +83,49 @@ class QuestionsScreen extends Component {
 
   render() {
     return (
-      <div className="h-100 ">
-        <Toaster />
+      <>
         {this.state.isLoading ? (
           <>
+            <Spinner />
+          </>
+        ) : Object.keys(this.props.questions).length ? (
+          <div>
             <nav
               className="navbar py-0 px-3 text-white"
               style={{ backgroundColor: "#29385c" }}
             >
               NIMCET - 2021
             </nav>
-            <Spinner />
-            {/* <h1>loader</h1> */}
-          </>
-        ) : Object.keys(this.props.questions).length ? (
-          <div className="d-flex">
-            <QuesScreenLeftPanel
-              // className="w-75"
-              questions={this.props.questions}
-              answers={this.props.answers}
-              MarkForReview={this.props.MarkForReview}
-              clearResponse={this.clearResponse}
-              SetAnswer={this.props.SetAnswer}
-              updateCheckedOption={this.updateCheckedOption}
-              checkedOption={this.state.checkedOption}
-            />
-            <QuesScreenRightPanel
-              // className="w-25"
-              questions={this.props.questions}
-              currentSection={this.props.currentSection}
-              onChangeQues={this.onChangeQues}
-              updateCheckedOption={this.updateCheckedOption}
-            />
+            <div className="d-flex">
+              <QuesScreenLeftPanel
+                // className="w-75"
+                questions={this.props.questions}
+                answers={this.props.answers}
+                MarkForReview={this.props.MarkForReview}
+                clearResponse={this.clearResponse}
+                SetAnswer={this.props.SetAnswer}
+                updateCheckedOption={this.updateCheckedOption}
+                checkedOption={this.state.checkedOption}
+              />
+              <QuesScreenRightPanel
+                // className="w-25"
+                questions={this.props.questions}
+                currentSection={this.props.currentSection}
+                onChangeQues={this.onChangeQues}
+                updateCheckedOption={this.updateCheckedOption}
+              />
+            </div>
           </div>
-        ) : null}
-      </div>
+        ) : (
+          <div className="d-flex flex-column" style={{ height: "100vh" }}>
+            <NavBar />
+            <div className="d-flex flex-grow-1 justify-content-center align-items-center">
+              <h3>Paper not found !!!</h3>
+            </div>
+            {/* <Toaster /> */}
+          </div>
+        )}
+      </>
     );
   }
 }

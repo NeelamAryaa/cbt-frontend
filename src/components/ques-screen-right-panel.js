@@ -27,9 +27,9 @@ const QuesScreenRightPanel = (props) => {
         }
       )
       .then((response) => {
-        console.log("r======", response.data);
+        // console.log("r======", response.data);
       })
-      .catch((err) => console.log("r=========", err));
+      .catch((err) => console.log("error", err));
 
     history.replace("/examsummary");
 
@@ -66,7 +66,7 @@ const QuesScreenRightPanel = (props) => {
           height="100"
         />
 
-        <div className="mx-2">
+        <div className="mx-2 text-capitalize">
           {/* <div className="row px-2 text-capitalize"> */}
           Name : {JSON.parse(localStorage.getItem("login")).username}
           {/* </div> */}

@@ -12,6 +12,7 @@ import {
   SET_PAPER_ID,
   SET_SCORE,
   SET_PAPER_TYPE_ID,
+  SET_INITIAL_STATE,
 } from "./question.types";
 
 // const questions = {
@@ -96,6 +97,17 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case SET_INITIAL_STATE:
+      return {
+        ...state,
+        paperTypeID: -1,
+        paperID: -1,
+        questions: {},
+        currentIndex: 0,
+        answers: {},
+        currentSection: null,
+        score: 0,
+      };
     case SET_PAPER_TYPE_ID:
       return {
         ...state,

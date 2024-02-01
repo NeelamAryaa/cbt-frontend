@@ -12,4 +12,5 @@ export const INITIAL_ANSWER = "INITIAL_ANSWER";
 export const SET_PAPER_ID = "SET_PAPER_ID";
 export const SET_SCORE = "SET_SCORE";
 export const SET_PAPER_TYPE_ID = "SET_PAPER_TYPE_ID";
+export const SET_INITIAL_STATE = "SET_INITIAL_STATE";
 // export const SET_IS_CORRECT = "SET_IS_CORRECT";

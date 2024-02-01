@@ -40,6 +40,8 @@ const ScoreScreen = (props) => {
       .get(`${base_api_url}/api/getScore/`)
       .then((response) => {
         const result = response.data;
+        // console.log(result);
+        // console.log(result.sec_wise_score[0]["mathematics"]);
         setResult(response.data);
         const correct = result.total_score;
         const wrong = result.total_attempt - result.total_score;

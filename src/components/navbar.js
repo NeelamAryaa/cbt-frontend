@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const NavBar = () => {
+import { connect } from "react-redux";
+
+import { GetInitialState } from "../redux/question/question.actions";
+
+const NavBar = (props) => {
   const history = useHistory();
 
   const [logout, setLogout] = useState(false);
@@ -16,10 +20,18 @@ const NavBar = () => {
     history.push("/");
   };
 
+  const setInitialState = () => {
+    props.GetInitialState();
+  };
+
   return (
     <nav className="navbar navbar-dark " style={{ backgroundColor: "#29385c" }}>
       <div className="container-fluid d-flex mw-100">
-        <Link to="/" className="text-white fs-3 text-decoration-none">
+        <Link
+          to="/"
+          className="text-white fs-3 text-decoration-none"
+          onClick={setInitialState}
+        >
           Computer Based Test
         </Link>
 
@@ -60,4 +72,10 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    GetInitialState: () => dispatch(GetInitialState()),
+  };
+};
+export default connect(null, mapDispatchToProps)(NavBar);
+// export default NavBar;
