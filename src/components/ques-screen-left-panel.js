@@ -74,6 +74,7 @@ class QuesScreenLeftPanel extends Component {
   };
 
   render() {
+    console.log("SECTIONS", Object.keys(this.props.questions));
     const qid =
       this.props.questions[this.props.currentSection][this.props.currentIndex]
         .qid;

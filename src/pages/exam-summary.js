@@ -42,13 +42,13 @@ class ExamSummary extends Component {
   render() {
     return (
       <div className="h-100">
-        <nav
+        {/* <nav
           className="navbar 
            py-0 px-3 text-white"
           style={{ background: "#29385c" }}
         >
           NIMCET - 2021
-        </nav>
+        </nav> */}
         <div
           className="d-flex flex-column align-items-center px-5 "
           style={{ height: "40vw" }}
