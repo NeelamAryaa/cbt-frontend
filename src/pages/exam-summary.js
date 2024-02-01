@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { base_api_url } from "../config";
 
+// import { GetInitialState } from "../redux/question/question.actions";
+
 class ExamSummary extends Component {
   state = {
     result: null,
@@ -32,6 +34,10 @@ class ExamSummary extends Component {
     });
     return { num_of_ans, num_of_visit, num_of_review };
   };
+
+  // setInitialState = () => {
+  //   this.props.GetInitialState();
+  // };
 
   render() {
     return (
@@ -93,7 +99,11 @@ class ExamSummary extends Component {
                 pathname: "/score-screen",
               }}
             >
-              <button type="button" className="btn btn-primary me-2">
+              <button
+                type="button"
+                className="btn btn-primary me-2"
+                // onClick={this.setInitialState}
+              >
                 Proceed
               </button>
             </Link>
@@ -111,5 +121,11 @@ const mapStateToProps = (state) => {
     // QuesPprID: state.index.paperID,
   };
 };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     GetInitialState: () => dispatch(GetInitialState()),
+//   };
+// };
 
 export default connect(mapStateToProps)(ExamSummary);

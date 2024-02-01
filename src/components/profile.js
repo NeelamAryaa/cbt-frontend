@@ -21,7 +21,7 @@ const Profile = () => {
         }
       )
       .then((response) => {
-        console.log("test", response);
+        // console.log("test", response);
         setTestHistory(response.data.rows);
       })
       .catch((err) => console.log(err));

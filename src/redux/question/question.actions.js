@@ -12,6 +12,7 @@ import {
   SET_PAPER_ID,
   SET_SCORE,
   SET_PAPER_TYPE_ID,
+  SET_INITIAL_STATE,
   // SET_IS_CORRECT,
 } from "./question.types";
 
@@ -24,6 +25,12 @@ export const SetPaperTypeID = (pid) => {
 export const SetQuestionPaperID = (id) => {
   return (dispatch) => {
     dispatch({ type: SET_PAPER_ID, payload: id });
+  };
+};
+
+export const GetInitialState = () => {
+  return (dispatch) => {
+    dispatch({ type: SET_INITIAL_STATE });
   };
 };
 

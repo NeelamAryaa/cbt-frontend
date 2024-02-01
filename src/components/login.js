@@ -41,7 +41,7 @@ const LoginPage = () => {
   const onChangeHandle = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
+    // console.log(name, value);
 
     setDetails({ ...details, [name]: value });
   };
